@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="dark"> <head> <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spyridon Oikonomidis - Researcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Keep dark mode enabled
+            theme: {
+                extend: {
+                    colors: {
+                        orcid: '#A6CE39', 
+                        researchgate: '#00CCBB', 
+                        facebook: '#1877F2' 
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%; 
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            @apply transition-colors duration-300;
+            position: relative; 
+            /* Default body styles for dark mode */
+            @apply bg-slate-900 text-gray-300;
+        }
+
+        .section-title {
+            /* Styles for dark mode */
+            @apply text-2xl font-semibold text-gray-100 mb-6 pb-2 border-b border-gray-700;
+        }
+        .nav-link {
+             /* Adjusted for dark mode header, text is white */
+            @apply px-4 py-2 rounded-md text-sm font-bold text-white hover:bg-green-600 hover:text-white transition-colors;
+        }
+        .nav-link-active {
+            /* Active link in dark mode header */
+            @apply bg-green-700 text-white font-bold;
+        }
+        .content-card {
+            /* Content card in dark mode */
+            @apply bg-slate-800 p-6 rounded-lg shadow-lg;
+        }
+        .hero-icon-link {
+            /* Hero icon general style for dark mode */
+            @apply inline-flex items-center justify-center p-2 rounded-full hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-150;
+        }
+        .hero-icon-link.cv-icon {
+            /* CV icon specific style for dark mode */
+             @apply text-green-500 hover:bg-green-800;
+        }
+        .hero-icon-link.researchgate-icon {
+            /* ResearchGate icon specific style for dark mode */
+            @apply text-researchgate hover:bg-teal-800; 
+        }
+        .hero-icon-link.orcid-icon {
+            /* ORCID icon specific style for dark mode */
+             @apply hover:bg-slate-700;
+        }
+
+        /* Styles for page background */
+        .page-background-image {
+            background-image: url('https://raw.githubusercontent.com/soikonomidis/Personal_page/main/Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2; 
+        }
+        .page-background-overlay {
+            /* Original overlay opacity for dark mode */
+            background-color: rgba(0, 0, 0, 0.40); 
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+        }
+        .content-on-top {
+            position: relative; 
+            z-index: 1; 
+            min-height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            background-color: transparent; 
+        }
+        .content-on-top > main {
+            flex-grow: 1; 
+        }
+
+        /* Custom text shadow styles for dark mode */
+        .text-shadow-white-on-dark { /* For light text on dark backgrounds (e.g., header, footer) */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        .text-shadow-for-dark-mode-text { /* Shadow for light text on dark bg */
+             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+        }
+    </style>
+    </head>
+<body class="bg-slate-900 text-gray-300"> <div class="page-background-image"></div>
+    <div class="page-background-overlay"></div>
+
+    <div class="content-on-top">
+        <header class="bg-green-700 shadow-md sticky top-0 z-50 transition-colors duration-300"> <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="index.html" class="text-xl font-bold text-white text-shadow-white-on-dark">Spyridon Oikonomidis</a>
+                    </div>
+                    <div class="hidden md:flex items-center">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#about" class="nav-link text-shadow-white-on-dark">About</a>
+                            <a href="experience.html" class="nav-link text-shadow-white-on-dark">Experience</a> 
+                            <a href="interests.html" class="nav-link text-shadow-white-on-dark">Interests</a>
+                            <a href="nature_photography.html" class="nav-link text-shadow-white-on-dark">Nature Photography</a>
+                        </div>
+                        </div>
+                    <div class="md:hidden flex items-center">
+                         <button id="mobile-menu-button" type="button" class="ml-auto inline-flex items-center justify-center p-2 rounded-md text-green-100 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false"> <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#about" class="block nav-link text-base text-shadow-white-on-dark">About</a>
+                    <a href="experience.html" class="block nav-link text-base text-shadow-white-on-dark">Experience</a> 
+                    <a href="interests.html" class="block nav-link text-base text-shadow-white-on-dark">Interests</a> 
+                    <a href="nature_photography.html" class="block nav-link text-base text-shadow-white-on-dark">Nature Photography</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+            <section id="hero" class="text-center py-12 md:py-16 rounded-lg shadow-xl mb-12 bg-slate-800/90 backdrop-blur-sm"> <img src="https://raw.githubusercontent.com/soikonomidis/Personal_page/main/CV_pic.png"
+                     alt="Spyridon Oikonomidis" class="w-[22rem] h-[22rem] md:w-[30rem] md:h-[30rem] mx-auto rounded-full object-cover">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-3 text-shadow-for-dark-mode-text">Spyridon Oikonomidis</h1> <p class="text-xl md:text-2xl text-gray-400 mb-6 text-shadow-for-dark-mode-text">Post Doctoral Researcher - Research Associate / National and Kapodistrian University of Athens Seed Bank</p> <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-8 text-shadow-for-dark-mode-text">
+                    <b><i>"Few things in the world intrigue me more than the reproductive mechanisms of the Orchidaceae."</b></i>
+                </p> <div class="mt-8 flex flex-wrap justify-center items-center gap-6 px-4">
+                    <a href="https://raw.githubusercontent.com/soikonomidis/Personal_page/main/2_Oikonomidis_CV.pdf" download="Spyridon_Oikonomidis_CV.pdf" class="hero-icon-link cv-icon" aria-label="Download CV">
+                        <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <title>CV</title>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443a55.378 55.378 0 015.25 2.882V15M12 12h.01M17.25 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675a55.378 55.378 0 00-5.25-2.882A55.378 55.378 0 006.75 11.325V15" />
+                        </svg>
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Spyridon-Oikonomidis?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" class="hero-icon-link researchgate-icon" aria-label="View ResearchGate Profile">
+                        <svg class="w-12 h-12" viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <title>ResearchGate</title>
+                            <path d="M41.683 29.223C42.283 29.223 42.833 29.383 43.303 29.653L43.493 29.763C43.903 29.993 44.273 30.293 44.573 30.643L44.723 30.823C44.993 31.163 45.203 31.543 45.333 31.953L45.393 32.143C45.583 32.603 45.723 33.083 45.783 33.583L45.803 33.703C45.853 34.153 45.863 34.603 45.843 35.053L45.843 35.083C45.843 35.533 45.803 35.983 45.723 36.423L45.703 36.543C45.623 36.993 45.483 37.443 45.303 37.873L45.243 38.063C45.083 38.473 44.843 38.863 44.533 39.203L44.383 39.383C44.083 39.733 43.713 40.033 43.293 40.263L43.103 40.373C42.663 40.643 42.163 40.803 41.633 40.803H41.603C41.003 40.803 40.453 40.643 39.983 40.373L39.793 40.263C39.383 40.033 39.013 39.733 38.713 39.383L38.563 39.203C38.293 38.863 38.083 38.483 37.953 38.073L37.893 37.883C37.703 37.423 37.563 36.943 37.503 36.443L37.483 36.323C37.433 35.873 37.423 35.423 37.443 34.973L37.443 34.943C37.443 34.493 37.483 34.043 37.563 33.603L37.583 33.483C37.663 33.033 37.803 32.583 37.983 32.153L38.043 31.963C38.203 31.553 38.443 31.163 38.753 30.823L38.903 30.643C39.203 30.293 39.573 29.993 39.993 29.763L40.183 29.653C40.623 29.383 41.123 29.223 41.653 29.223H41.683ZM22.317 40.777C21.717 40.777 21.167 40.617 20.697 40.347L20.507 40.237C20.097 40.007 19.727 39.707 19.427 39.357L19.277 39.177C19.007 38.837 18.797 38.457 18.667 38.047L18.607 37.857C18.417 37.397 18.277 36.917 18.217 36.417L18.197 36.297C18.147 35.847 18.137 35.397 18.157 34.947L18.157 34.917C18.157 34.467 18.197 34.017 18.277 33.577L18.297 33.457C18.377 33.007 18.517 32.557 18.697 32.127L18.757 31.937C18.917 31.527 19.157 31.137 19.467 30.797L19.617 30.617C19.917 30.267 20.287 29.967 20.707 29.737L20.897 29.627C21.337 29.357 21.837 29.197 22.367 29.197H22.397C22.997 29.197 23.547 29.357 24.017 29.627L24.207 29.737C24.617 29.967 24.987 30.267 25.287 30.617L25.437 30.797C25.707 31.137 25.917 31.517 26.047 31.927L26.107 32.117C26.297 32.577 26.437 33.057 26.497 33.557L26.517 33.677C26.567 34.127 26.577 34.577 26.557 35.027L26.557 35.057C26.557 35.507 26.517 35.957 26.437 36.397L26.417 36.517C26.337 36.967 26.197 37.417 26.017 37.847L25.957 38.037C25.797 38.447 25.557 38.837 25.247 39.177L25.097 39.357C24.797 39.707 24.427 40.007 24.007 40.237L23.817 40.347C23.377 40.617 22.877 40.777 22.347 40.777H22.317ZM29.918 17.196H36.082000000000001V23.196H29.918V17.196ZM30.001 45.001C26.681 45.001 23.701 43.931 21.581 42.101H42.421C40.301 43.931 37.321 45.001 34.001 45.001C32.691 45.001 31.421 44.791 30.241 44.411L30.001 45.001ZM19.781 48.801C22.381 50.001 25.361 50.801 28.501 50.801V56.801H35.501V50.801C38.641 50.801 41.621 50.001 44.221 48.801H19.781Z"/>
+                    </svg>
+                </a>
+                <a href="https://orcid.org/0000-0003-4779-6897" target="_blank" rel="noopener noreferrer" class="hero-icon-link orcid-icon" aria-label="View ORCID Profile">
+                     <svg class="w-12 h-12" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <title>ORCID</title>
+                        <path d="M128 0C57.308 0 0 57.308 0 128s57.308 128 128 128 128-57.308 128-128S198.692 0 128 0zM70.066 210.112H51.17V86.011h18.896v124.101zm61.31-85.258c0-10.028 8.136-18.164 18.164-18.164h.171c10.028 0 18.164 8.136 18.164 18.164v76.182c0 10.028-8.136 18.164-18.164 18.164h-.171c-10.028 0-18.164-8.136-18.164-18.164V124.854zm64.544-41.012H177.02V70.066h18.896v13.776z" fill="#A6CE39"/>
+                        <path d="M131.376 124.854c0-10.028 8.136-18.164 18.164-18.164h.171c10.028 0 18.164 8.136 18.164 18.164v76.182c0 10.028-8.136 18.164-18.164 18.164h-.171c-10.028 0-18.164-8.136-18.164-18.164V124.854zm64.544-41.012H177.02V70.066h18.896v13.776zM70.066 210.112H51.17V86.011h18.896v124.101z" fill="#FFF"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        
+        <section id="about" class="mb-12 scroll-mt-20">
+            <div class="content-card">
+                <h2 class="section-title text-shadow-for-dark-mode-text"><b>About Me</b></h2>
+                <p class="mb-4 text-shadow-for-dark-mode-text">
+                    Welcome to my personal page! I am Spyros Oikonomidis, currently a Post Doctoral Research at the NKUA Seed Bank, Athens, Greece. My research interests lie primarily in the areas of: 1) Orchid seed biology 2) ex-situ plant conservation 3) plant trait evolution.
+                </p>
+                <p class="mb-4 text-shadow-for-dark-mode-text">
+                   I received my B.Sc. in Biology from the National and Kapodistrian University of Athens (NKUA) on 2019 and my Ph.D. on orchid seed biology and conservation from the same university on 2024. Since 2019, I have worked in 19 funded research programms and several non-funded projects in collaboration with members of: 1) the NKUA Seed Bank, Athens, Greece as well as other members of the Section of Botany of the NKUA, 2) The Institute of Mediterranean Forest Ecosystems, 3) Mediterranean Agronomic Institute of Chania, and 4) The Natural Enviroment Climate & Change Agency, Athens, Greece 5) The Forest Research Institute, Thessaloniki, Greece 6) The Department of Forestry and Natural Enviroment, Democritus University of Thrace, Drama, Greece. 7) The Millennium Seed Bank (RBG, Kew), Wakehurst Place, England 8) The A. Takhtajan Institute of Botany, Armenian National Academy of Sciences, Yerevan, Armenia.
+                </p>
+                <p class="text-shadow-for-dark-mode-text">
+                    Here, you can find more information about my research projects, publications, teaching activities, and my updated CV.
+                </p>
+            </div>
+        </section>
+        
+        <section id="contact" class="scroll-mt-20">
+            <div class="content-card">
+                <h2 class="section-title text-shadow-for-dark-mode-text"><b>Get In Touch</b></h2>
+                <p class="mb-6 text-shadow-for-dark-mode-text">
+                    I'm always open to discussing research, potential collaborations, or interesting ideas. Feel free to reach out!
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-100 mb-2 text-shadow-for-dark-mode-text">Contact Information</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-shadow-for-dark-mode-text">
+                                <svg class="w-5 h-5 inline mr-1 text-gray-400 align-middle" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                </svg>
+                                <strong>Email:</strong> <a href="mailto:soikonomidis@biol.uoa.gr" class="ml-1 text-blue-400 hover:underline">soikonomidis@biol.uoa.gr</a>
+                            </li>
+                            <li class="flex items-center text-shadow-for-dark-mode-text">
+                                <svg class="w-5 h-5 inline mr-1 text-gray-400 align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                     <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v12a1 1 0 11-2 0V3a1 1 0 011-1zm5 2a1 1 0 011 1v12a1 1 0 11-2 0V5a1 1 0 011-1zm5 0a1 1 0 011 1v12a1 1 0 11-2 0V5a1 1 0 011-1zM2 18a1 1 0 001 1h14a1 1 0 001-1V6a1 1 0 00-1-1h-2.586a1 1 0 00-.707.293l-1.414 1.414A1 1 0 0112 8H8a1 1 0 01-.707-.293L5.879 6.293A1 1 0 005.172 6H3a1 1 0 00-1 1v12z" clip-rule="evenodd" />
+                                </svg>
+                                <strong>Office:</strong> <span class="ml-1">Office 74, Section of Botany, Department of Biology, National and Kapodistrian University of Athens, Athens, Greece</span>
+                            </li>
+                            <li class="flex items-center text-shadow-for-dark-mode-text">
+                                <svg class="w-5 h-5 inline mr-1 text-gray-400 align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                                <strong>Phone:</strong> <span class="ml-1">+30 6971634291</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-100 mb-2 text-shadow-for-dark-mode-text">Find me online</h3>
+                        <ul class="space-y-3">                           
+                             <li class="flex items-center text-shadow-for-dark-mode-text">
+                                <svg class="w-5 h-5 inline mr-2 text-facebook align-middle" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.142v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.086h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                                </svg>
+                                <a href="https://www.facebook.com/profile.php?id=100070040256387" target="_blank" rel="noopener noreferrer" class="ml-1 text-blue-400 hover:underline">Spyridon Oikonomidis on Facebook</a>
+                            </li>
+                            <li class="flex items-center text-shadow-for-dark-mode-text">
+                                <svg class="w-5 h-5 inline mr-1 text-gray-400 align-middle" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073 4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                    <a href="https://instagram.com/s.oikonomidis/?hl=el" target="_blank" rel="noopener noreferrer" class="ml-1 text-blue-400 hover:underline">Spyridon Oikonomidis on instagram</a>
+                                </li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-slate-950 text-gray-400 text-center py-6 transition-colors duration-300"> <p class="text-shadow-white-on-dark">&copy; <span id="currentYear"></span> Spyridon Oikonomidis. All rights reserved.</p>
+            <p class="text-sm text-shadow-white-on-dark">Last updated: May 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theme toggle logic removed as it's dark mode only
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = mobileMenu ? mobileMenu.querySelectorAll('a.nav-link') : [];
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+                    mobileMenu.classList.toggle('hidden');
+                    const icons = mobileMenuButton.querySelectorAll('svg');
+                    if (icons.length === 2) {
+                        icons[0].classList.toggle('hidden', !isExpanded);
+                        icons[1].classList.toggle('hidden', isExpanded);
+                    }
+                });
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        const icons = mobileMenuButton.querySelectorAll('svg');
+                         if (icons.length === 2) { icons[0].classList.remove('hidden'); icons[1].classList.add('hidden'); }
+                    });
+                });
+            }
+
+            // Set current year in footer
+            const currentYearElement = document.getElementById('currentYear');
+            if (currentYearElement) currentYearElement.textContent = new Date().getFullYear();
+
+            // Active navigation link highlighting
+            const mainSections = document.querySelectorAll('main > section[id]');
+            const headerNavLinks = document.querySelectorAll('header div.hidden.md\\:flex a.nav-link');
+            
+            function updateActiveNavLink() {
+                let currentSectionId = '';
+                const scrollPosition = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+
+                mainSections.forEach(section => {
+                    if (section.id && document.getElementById(section.id)) {
+                        const sectionTop = section.offsetTop;
+                        if (scrollPosition >= sectionTop - 80) { 
+                            currentSectionId = section.getAttribute('id');
+                        }
+                    }
+                });
+
+                headerNavLinks.forEach(link => {
+                    link.classList.remove('nav-link-active');
+                    const linkHref = link.getAttribute('href');
+                    if (linkHref && linkHref.includes('#') && linkHref.substring(linkHref.indexOf('#')) === `#${currentSectionId}`) {
+                        link.classList.add('nav-link-active');
+                    }
+                });
+                mobileNavLinks.forEach(link => { 
+                    link.classList.remove('nav-link-active');
+                    const linkHref = link.getAttribute('href');
+                     if (linkHref && linkHref.includes('#') && linkHref.substring(linkHref.indexOf('#')) === `#${currentSectionId}`) {
+                        link.classList.add('nav-link-active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', updateActiveNavLink);
+            updateActiveNavLink(); 
+        });
+    </script>
+
+</body>
+</html>

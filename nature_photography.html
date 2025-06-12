@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="dark"> <head> <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Photography - Spyridon Oikonomidis</title> <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Keep dark mode enabled
+            theme: {
+                extend: {
+                    colors: {
+                        orcid: '#A6CE39',
+                        researchgate: '#00CCBB',
+                        facebook: '#1877F2'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply transition-colors duration-300;
+            position: relative;
+            /* Default body styles for dark mode - text set to a light gray for readability */
+            @apply bg-slate-900 text-gray-100;
+        }
+        .section-title {
+            /* Styles for dark mode - text set to white */
+            @apply text-2xl font-semibold text-white mb-6 pb-2 border-b border-gray-700;
+        }
+        .nav-link {
+            /* Nav links are white in dark mode */
+            @apply px-3 py-2 rounded-md text-sm font-bold text-white hover:bg-green-600 hover:text-white transition-colors;
+        }
+        .nav-link-active {
+            @apply bg-green-700 text-white font-bold;
+        }
+        .content-card {
+            /* Content card in dark mode */
+            @apply bg-slate-800 p-6 rounded-lg shadow-lg;
+        }
+        .modal-active {
+            @apply flex;
+        }
+        .photo-grid-item img {
+            transition: transform 0.3s ease-in-out;
+        }
+        .photo-grid-item:hover img {
+            transform: scale(1.05);
+        }
+        #modalCaptionBox {
+            /* Caption box in modal for dark mode */
+            @apply absolute top-4 right-4 bg-slate-700 bg-opacity-90 p-3 rounded-md shadow-lg text-sm text-gray-200 max-w-xs;
+            z-index: 60;
+        }
+        #modalCaptionBox em, #modalCaptionBox i {
+            font-style: italic;
+        }
+        .loader {
+            border: 4px solid #4A5568; /* Darker gray for dark mode */
+            border-top: 4px solid #38a169; /* Green accent */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            @apply mx-auto my-8;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Styles for page background */
+        .page-background-image {
+            background-image: url('https://raw.githubusercontent.com/soikonomidis/Personal_page/main/Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        .page-background-overlay {
+            /* Original overlay opacity for dark mode */
+            background-color: rgba(0, 0, 0, 0.40); 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content-on-top {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: transparent;
+        }
+        .content-on-top > main {
+            flex-grow: 1;
+        }
+        /* Custom text shadow for better readability on dark backgrounds */
+        .text-shadow-for-dark-mode-text {
+             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+        }
+    </style>
+    </head>
+<body class="bg-slate-900 text-gray-100"> <div class="page-background-image"></div>
+    <div class="page-background-overlay"></div>
+
+    <div class="content-on-top">
+        <header class="bg-green-700 shadow-md sticky top-0 z-40 transition-colors duration-300"> <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="index.html" class="text-xl font-bold text-white text-shadow-for-dark-mode-text">Spyridon Oikonomidis</a>
+                    </div>
+                    <div class="hidden md:flex items-center">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="index.html#about" class="nav-link text-shadow-for-dark-mode-text">About</a>
+                            <a href="experience.html" class="nav-link text-shadow-for-dark-mode-text">Experience</a>
+                            <a href="interests.html" class="nav-link text-shadow-for-dark-mode-text">Interests</a>
+                            <a href="nature_photography.html" class="nav-link nav-link-active text-shadow-for-dark-mode-text">Nature Photography</a>
+                        </div>
+                        </div>
+                    <div class="md:hidden flex items-center">
+                         <button id="mobile-menu-button" type="button" class="ml-auto inline-flex items-center justify-center p-2 rounded-md text-green-100 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html#about" class="block nav-link text-base text-shadow-for-dark-mode-text">About</a>
+                    <a href="experience.html" class="block nav-link text-base text-shadow-for-dark-mode-text">Experience</a>
+                    <a href="interests.html" class="block nav-link text-base text-shadow-for-dark-mode-text">Interests</a>
+                    <a href="nature_photography.html" class="block nav-link text-base nav-link-active text-shadow-for-dark-mode-text">Nature Photography</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <section id="photography" class="mb-12 scroll-mt-20">
+                <div class="content-card">
+                    <h2 class="section-title text-shadow-for-dark-mode-text"><b>A window to...my field work</b></h2>
+                    <p class="mb-6 text-gray-200 text-shadow-for-dark-mode-text">A collection of moments captured in nature. Click on an image to enlarge.</p> <div id="loadingIndicator" class="loader"></div>
+                    <div id="photoGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        </div>
+                    <p id="noPhotosMessage" class="text-gray-300 hidden text-shadow-for-dark-mode-text">No photos to display, or there was an issue fetching them. Please ensure filenames in your GitHub repository start with a number and are in the root directory (e.g., '10_Fritillaria_graeca.jpg' or '14_Mt_Oeta.jpg'). Check the browser console (F12) for more details if issues persist.</p> </div>
+            </section>
+
+             <section id="contact" class="scroll-mt-20">
+                <div class="content-card">
+                    <h2 class="section-title text-shadow-for-dark-mode-text">Get In Touch</h2>
+                    <p class="mb-6 text-gray-100 text-shadow-for-dark-mode-text">
+                        I'm always open to discussing research, potential collaborations, or interesting ideas. Feel free to reach out!
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-2 text-shadow-for-dark-mode-text">Contact Information</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-1 text-gray-300 align-middle" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                    </svg>
+                                    <strong>Email:</strong> <a href="mailto:soikonomidis@biol.uoa.gr" class="ml-1 text-blue-400 hover:underline">soikonomidis@biol.uoa.gr</a>
+                                </li>
+                                <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-1 text-gray-300 align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                         <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v12a1 1 0 11-2 0V3a1 1 0 011-1zm5 2a1 1 0 011 1v12a1 1 0 11-2 0V5a1 1 0 011-1zm5 0a1 1 0 011 1v12a1 1 0 11-2 0V5a1 1 0 011-1zM2 18a1 1 0 001 1h14a1 1 0 001-1V6a1 1 0 00-1-1h-2.586a1 1 0 00-.707.293l-1.414 1.414A1 1 0 0112 8H8a1 1 0 01-.707-.293L5.879 6.293A1 1 0 005.172 6H3a1 1 0 00-1 1v12z" clip-rule="evenodd" />
+                                    </svg>
+                                    <strong>Office:</strong> <span class="ml-1">Office 74, Section of Botany, Department of Biology, National and Kapodistrian University of Athens, Athens, Greece</span>
+                                </li>
+                                <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-1 text-gray-300 align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                    </svg>
+                                    <strong>Phone:</strong> <span class="ml-1">+30 6971634291</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-2 text-shadow-for-dark-mode-text">Find me online</h3>
+                            <ul class="space-y-3">
+                                 <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-2 text-facebook align-middle" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.142v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.086h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                                    </svg>
+                                    <a href="https://www.facebook.com/profile.php?id=100070040256387" target="_blank" rel="noopener noreferrer" class="ml-1 text-blue-400 hover:underline">Spyridon Oikonomidis on Facebook</a>
+                                </li>
+                                <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-1 text-gray-300 align-middle" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073 4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                    <a href="https://instagram.com/s.oikonomidis/?hl=el" target="_blank" rel="noopener noreferrer" class="ml-1 text-blue-400 hover:underline">Spyridon Oikonomidis on Instagram</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-slate-950 text-gray-200 text-center py-6 mt-12 transition-colors duration-300"> <p class="text-shadow-for-dark-mode-text">&copy; <span id="currentYear"></span> Spyridon Oikonomidis. All rights reserved.</p>
+            <p class="text-sm text-shadow-for-dark-mode-text">Last updated: May 2025</span></p>
+        </footer>
+    </div>
+
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50 p-4 transition-opacity duration-300">
+        <div class="relative bg-slate-800 p-2 sm:p-4 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center"> <img id="modalImage" src="" alt="Enlarged photo" class="max-w-full max-h-[80vh] object-contain mx-auto rounded">
+            <div id="modalCaptionBox"> <p id="modalCaption" class="text-sm"></p>
+                <p class="text-xs mt-1">© Soikonomidis</p>
+            </div>
+            <button id="closeModal" class="absolute top-2 right-2 -mt-2 -mr-2 sm:top-1 sm:right-1 p-1.5 bg-gray-700 hover:bg-red-600 text-white rounded-full text-xl leading-none focus:outline-none z-10" aria-label="Close modal"> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const photoGrid = document.getElementById('photoGrid');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const closeModalButton = document.getElementById('closeModal');
+            const noPhotosMessage = document.getElementById('noPhotosMessage');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+
+            const GITHUB_USER = 'soikonomidis';
+            const GITHUB_REPO = 'Personal_page';
+            const REPO_PATH = ''; 
+            const API_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${REPO_PATH}`;
+
+            let photos = [];
+
+            async function fetchAndProcessPhotos() {
+                if (loadingIndicator) loadingIndicator.classList.remove('hidden');
+                if (noPhotosMessage) noPhotosMessage.classList.add('hidden');
+
+                try {
+                    const response = await fetch(API_URL);
+                    if (!response.ok) {
+                        throw new Error(`GitHub API error: ${response.status} ${response.statusText}. URL: ${API_URL}`);
+                    }
+                    const files = await response.json();
+
+                    if (!Array.isArray(files)) {
+                         console.error("GitHub API did not return an array for directory contents:", files);
+                         if (noPhotosMessage) noPhotosMessage.textContent = "Error: Could not retrieve photo list from GitHub. Response was not an array.";
+                         if (noPhotosMessage) noPhotosMessage.classList.remove('hidden');
+                         if (loadingIndicator) loadingIndicator.classList.add('hidden');
+                         return;
+                    }
+
+                    const imageFileExtensions = /\.(jpg|jpeg|png|gif)$/i;
+                    const filenamePattern = /^\d+/; 
+                                        
+                    photos = files
+                        .filter(file => {
+                            const isImage = file.type === 'file' && imageFileExtensions.test(file.name);
+                            const matchesPattern = filenamePattern.test(file.name);
+                            // Ensure download_url exists
+                            return isImage && matchesPattern && file.download_url;
+                        })
+                        .map(file => {
+                            const filename = file.name;
+                            const nameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
+                            
+                            let orderPrefix = 0;
+                            let nameCore = nameWithoutExtension; 
+
+                            const orderMatch = nameWithoutExtension.match(/^(\d+)/);
+                            if (orderMatch && orderMatch[1]) {
+                                orderPrefix = parseInt(orderMatch[1], 10);
+                                nameCore = nameWithoutExtension.substring(orderMatch[1].length);
+                                if (nameCore.startsWith('_')) { 
+                                    nameCore = nameCore.substring(1);
+                                }
+                            } else {
+                                orderPrefix = 9999; 
+                            }
+                            
+                            const nameTokens = nameCore.split('_').filter(token => token.length > 0);
+                            let captionText = '';
+                            let altTextForThumb = '';
+                            
+                            if (nameTokens.length >= 2 && 
+                                nameTokens[0].length > 0 && nameTokens[0][0] === nameTokens[0][0].toUpperCase() && 
+                                nameTokens[1].length > 0 && nameTokens[1][0] === nameTokens[1][0].toLowerCase()) {
+                                
+                                let genus = nameTokens[0];
+                                let epithetArray = [];
+                                
+                                for (let i = 1; i < nameTokens.length; i++) {
+                                    let token = nameTokens[i];
+                                    let lowerToken = token.toLowerCase();
+                                    if (lowerToken === "subsp" || lowerToken === "ssp") {
+                                        epithetArray.push("subsp."); 
+                                    } else if (lowerToken === "var") {
+                                        epithetArray.push("var."); 
+                                    } else if (lowerToken === "f" || lowerToken === "fo") {
+                                        epithetArray.push("f."); 
+                                    } else {
+                                        epithetArray.push(`<i>${token}</i>`); 
+                                    }
+                                }
+                                captionText = `<i>${genus}</i> ${epithetArray.join(' ')}`;
+                                altTextForThumb = `${genus} ${nameTokens.slice(1).join(' ')}`;
+
+                            } else if (nameTokens.length > 0) { 
+                                captionText = nameTokens.join(' '); 
+                                altTextForThumb = captionText;
+                            } else { 
+                                captionText = nameCore.replace(/_/g, ' '); 
+                                altTextForThumb = captionText;
+                            }
+                            
+                            captionText = captionText.replace(/<i> <\/i>/g, ' ').replace(/  +/g, ' ').trim();
+                            altTextForThumb = altTextForThumb.replace(/_/g, ' ').replace(/  +/g, ' ').trim();
+
+                            return {
+                                fullSrcUrl: file.download_url, // Directly use download_url
+                                thumbSrcUrl: file.download_url, // Directly use download_url
+                                caption: captionText,
+                                altText: altTextForThumb,
+                                order: orderPrefix
+                            };
+                        });
+
+                    photos.sort((a, b) => a.order - b.order);
+                    
+                    if (photos.length === 0) {
+                        if (noPhotosMessage) {
+                             if (files && files.length > 0) {
+                                noPhotosMessage.textContent = "No photos matching the required naming convention (e.g., starting with a number, valid image extension) were found in the repository root, or their download URLs are missing. Please check your filenames and GitHub repository settings.";
+                            } else if (files && files.length === 0) {
+                                noPhotosMessage.textContent = "No files found in the root of the GitHub repository.";
+                            } else {
+                                noPhotosMessage.textContent = "Could not retrieve photo list from GitHub or no photos found.";
+                            }
+                            noPhotosMessage.classList.remove('hidden');
+                        }
+                    } else {
+                        populatePhotoGrid();
+                    }
+
+                } catch (error) {
+                    console.error("Error fetching or processing photos:", error);
+                    if (noPhotosMessage) noPhotosMessage.textContent = "Could not load photos. " + error.message + " Check console (F12) for details.";
+                    if (noPhotosMessage) noPhotosMessage.classList.remove('hidden');
+                } finally {
+                    if (loadingIndicator) loadingIndicator.classList.add('hidden');
+                }
+            }
+
+
+            function createPhotoElement(photo) {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'group photo-grid-item relative rounded-lg overflow-hidden shadow-md cursor-pointer';
+                itemDiv.dataset.fullsrc = photo.fullSrcUrl; // Ensure this is set
+                itemDiv.dataset.caption = photo.caption; 
+
+                const img = document.createElement('img');
+                
+                if (photo.thumbSrcUrl) {
+                    img.src = photo.thumbSrcUrl;
+                } else {
+                    // Fallback if thumbSrcUrl is somehow missing, though the filter should prevent this
+                    img.src = 'https://placehold.co/600x400/333333/FFFFFF?text=Invalid+URL';
+                    console.warn(`Missing thumbSrcUrl for photo: ${photo.altText || 'Unknown photo'}`);
+                }
+                
+                img.loading = "lazy"; 
+                img.onerror = function() { 
+                    this.onerror=null; 
+                    this.src='https://placehold.co/600x400/333333/FFFFFF?text=Image+Load+Error';
+                    // Enhanced console error
+                    console.error(`Error loading image. URL: ${photo.thumbSrcUrl || 'N/A'}. Photo data:`, JSON.stringify(photo));
+                };
+                img.alt = photo.altText || "Nature photography image"; 
+                img.className = 'w-full h-64 object-cover';
+
+                itemDiv.appendChild(img);
+
+                itemDiv.addEventListener('click', () => {
+                    if (modal && modalImage && modalCaption) {
+                        // Use fullSrcUrl for the modal
+                        if (itemDiv.dataset.fullsrc && itemDiv.dataset.fullsrc !== 'null' && itemDiv.dataset.fullsrc !== 'undefined') {
+                             modalImage.src = itemDiv.dataset.fullsrc;
+                        } else {
+                            modalImage.src = 'https://placehold.co/600x400/333333/FFFFFF?text=Full+Image+Error';
+                             console.error(`Invalid or missing fullsrc for modal. Original photo data:`, JSON.stringify(photo));
+                        }
+                        modalImage.alt = (photo.altText || "Enlarged photo") + " - Full view"; 
+                        modalCaption.innerHTML = itemDiv.dataset.caption || "No caption available."; 
+                        
+                        modal.classList.remove('hidden');
+                        modal.classList.add('modal-active');
+                        document.body.style.overflow = 'hidden'; 
+                    }
+                });
+                return itemDiv;
+            }
+
+            function populatePhotoGrid() {
+                if (!photoGrid) {
+                    console.error("Photo grid element not found!");
+                    return;
+                }
+                photoGrid.innerHTML = ''; 
+                
+                if (photos.length === 0) { 
+                    // This case is handled in fetchAndProcessPhotos now
+                } else if (noPhotosMessage) {
+                    noPhotosMessage.classList.add('hidden');
+                    photos.forEach((photo) => {
+                        const photoElement = createPhotoElement(photo);
+                        photoGrid.appendChild(photoElement);
+                    });
+                }
+            }
+            
+            if (photoGrid) { 
+                 fetchAndProcessPhotos();
+            }
+
+
+            function closeModal() {
+                if (modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('modal-active');
+                    document.body.style.overflow = ''; 
+                }
+            }
+
+            if (closeModalButton) {
+                closeModalButton.addEventListener('click', closeModal);
+            }
+            if (modal) {
+                modal.addEventListener('click', function(event) {
+                    if (event.target === modal) { 
+                        closeModal();
+                    }
+                });
+            }
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+
+            // Menu Toggle Logic (Theme part removed as it's dark mode only)
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+                    mobileMenu.classList.toggle('hidden');
+                    const icons = mobileMenuButton.querySelectorAll('svg');
+                    if (icons.length === 2) {
+                        icons[0].classList.toggle('hidden', !isExpanded); 
+                        icons[1].classList.toggle('hidden', isExpanded);  
+                    }
+                });
+                const mobileNavLinks = mobileMenu.querySelectorAll('a.nav-link');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        const icons = mobileMenuButton.querySelectorAll('svg');
+                        if (icons.length === 2) { icons[0].classList.remove('hidden'); icons[1].classList.add('hidden'); }
+                    });
+                });
+            }
+
+            const currentYearElement = document.getElementById('currentYear');
+            if (currentYearElement) currentYearElement.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" class="dark"> <head> <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Interests - Spyridon Oikonomidis</title> <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Keep dark mode enabled
+            theme: {
+                extend: {
+                     colors: {
+                        orcid: '#A6CE39',
+                        researchgate: '#00CCBB',
+                        facebook: '#1877F2'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply transition-colors duration-300;
+            position: relative;
+            /* Default body styles for dark mode - text set to a light gray for readability */
+            @apply bg-slate-900 text-gray-100; /* Changed from text-gray-300 */
+        }
+        .section-title {
+            /* Styles for dark mode - text set to white */
+            @apply text-2xl font-semibold text-white mb-6 pb-2 border-b border-gray-700; /* Changed from text-gray-100 */
+        }
+        .nav-link {
+            /* Nav links are white in dark mode */
+            @apply px-3 py-2 rounded-md text-sm font-bold text-white hover:bg-green-600 hover:text-white transition-colors;
+        }
+         .nav-link-active {
+            @apply bg-green-700 text-white font-bold;
+        }
+        .content-card {
+            /* Content card in dark mode */
+            @apply bg-slate-800 p-6 rounded-lg shadow-lg;
+        }
+        .tab-button {
+            /* Tab buttons in dark mode */
+            @apply px-4 py-2 -mb-px font-semibold border-b-2 border-transparent rounded-t-lg text-gray-300 hover:text-green-400 hover:border-green-400 focus:outline-none;
+        }
+        .tab-button.active {
+            /* Active tab button in dark mode */
+            @apply text-green-500 border-green-500;
+        }
+        .tab-content {
+            @apply hidden p-1;
+        }
+        .tab-content.active {
+            @apply block;
+        }
+
+        /* Styles for page background */
+        .page-background-image {
+            background-image: url('https://raw.githubusercontent.com/soikonomidis/Personal_page/main/Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        .page-background-overlay {
+            /* Original overlay opacity for dark mode */
+            background-color: rgba(0, 0, 0, 0.40); 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content-on-top {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: transparent;
+        }
+        .content-on-top > main {
+            flex-grow: 1;
+        }
+        /* Custom text shadow for better readability on dark backgrounds */
+        .text-shadow-for-dark-mode-text {
+             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+        }
+    </style>
+    </head>
+<body class="bg-slate-900 text-gray-100"> <div class="page-background-image"></div>
+    <div class="page-background-overlay"></div>
+
+    <div class="content-on-top">
+        <header class="bg-green-700 shadow-md sticky top-0 z-50 transition-colors duration-300"> <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="index.html" class="text-xl font-bold text-white text-shadow-for-dark-mode-text">Spyridon Oikonomidis</a>
+                    </div>
+                    <div class="hidden md:flex items-center">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="index.html#about" class="nav-link text-shadow-for-dark-mode-text">About</a>
+                            <a href="experience.html" class="nav-link text-shadow-for-dark-mode-text">Experience</a>
+                            <a href="interests.html" class="nav-link nav-link-active text-shadow-for-dark-mode-text">Interests</a>
+                            <a href="nature_photography.html" class="nav-link text-shadow-for-dark-mode-text">Nature Photography</a>
+                        </div>
+                        </div>
+                    <div class="md:hidden flex items-center">
+                         <button id="mobile-menu-button" type="button" class="ml-auto inline-flex items-center justify-center p-2 rounded-md text-green-100 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html#about" class="block nav-link text-base text-shadow-for-dark-mode-text">About</a>
+                    <a href="experience.html" class="block nav-link text-base text-shadow-for-dark-mode-text">Experience</a>
+                    <a href="interests.html" class="block nav-link text-base nav-link-active text-shadow-for-dark-mode-text">Interests</a>
+                    <a href="nature_photography.html" class="block nav-link text-base text-shadow-for-dark-mode-text">Nature Photography</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <section id="researchInterests" class="mb-12 scroll-mt-20">
+                <div class="content-card">
+                    <div class="mb-6 border-b border-gray-700"> <nav class="flex space-x-1 sm:space-x-2" aria-label="Tabs">
+                            <button type="button" class="tab-button active" data-tab-target="#researchContent" role="tab" aria-controls="researchContent" aria-selected="true">Research</button>
+                            <button type="button" class="tab-button" data-tab-target="#publicationsContent" role="tab" aria-controls="publicationsContent" aria-selected="false">Publications</button>
+                        </nav>
+                    </div>
+
+                    <div id="researchContent" class="tab-content active" role="tabpanel" aria-labelledby="research-tab">
+                        <h2 class="section-title text-shadow-for-dark-mode-text"><b>Research Interests</b></h2>
+                        <ul class="list-disc list-inside space-y-2 mb-4 text-gray-100 text-shadow-for-dark-mode-text">
+                            <li><strong>Orchid seed storage behaviour:</strong> My research focuses on the ex situ conservation of orchids seeds in seed bank conditions and the potential long term storage of the greek orchids.</li>
+                            <li><strong>Orchid seed germination behaviour:</strong> Regarding the germination behaviour of orchid species I focus on the study of individual factors on their germination, instead of complex media along, with the effect of in-situ conditions on the germination and quality of the produced seeds (e.g. effect of cross- and self-pollination on seed quality).</li>
+                            <li><strong>Population dynamics of rare plant species of Greece:</strong> Through in-situ annual monitoring of target species e.g. <i>Cephalanthera cucullata</i>, <i>Veronica oetaea</i>, the study of their ecophysiology and the application of population matrix models we aim to assess the future survival of the species, suggest and implement conservation actions.</li>
+                            <li><strong> Ex situ conservation of the seeds of the flora of Greece:</strong> With the NKUA Seed Bank team we aim to conserve seeds of the endemic and threatened plant species of the Greek flora the past 6 years during my collaboration with the NKUA Seed Bank we have targeted, collected and conserved in the seed bank aproximately 700 taxa represented by 800 collections</li>
+                        </ul>
+                       <p class="text-gray-100 text-shadow-for-dark-mode-text">
+                            Current major project (Supervisor Emeritus Professor Costas A. Thanos): <a href="http://users.uoa.gr/~cthanos/NKUASB_SeedConservationoftheFloraofGreece/" class="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer"><b>Conservig the flora of the Balkans: Native plants of Greece</b> (Funded By: RBG, Kew)</a>
+                        </p>
+                    </div>
+
+                    <div id="publicationsContent" class="tab-content" role="tabpanel" aria-labelledby="publications-tab">
+                        <h2 class="section-title text-shadow-for-dark-mode-text"><b>Selected Publications</b></h2>
+                        <p class="mb-4 text-gray-100 text-shadow-for-dark-mode-text">For a full list, please see my <a href="https://scholar.google.com/citations?hl=en&user=9K2HGgUAAAAJ&view_op=list_works&gmla=AIfU4H6QSTXdecYPabJQWFdJokmwXwmX2ARoEuveFgu19Vps090YL3YvuAySqgkFYgJ8R-WQonMN7EK9cvC4wKRz" class="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Google Scholar profile</a> or my CV.</p>
+                        <div class="space-y-6">
+                            <div class="publication-item">
+                                <h3 class="text-lg font-semibold text-white text-shadow-for-dark-mode-text">"Orchid embryo-to-seed (E:S) ratio as an indicator of germination behaviour and its ecological implications"</h3>
+                                <p class="text-sm text-gray-200 text-shadow-for-dark-mode-text"><strong>Oikonomidis S.</strong>, Thanos C.A. (2024). <em>Seed Science and Research</em>, 34, pp. 218-227.</p>
+                                <p class="text-sm mt-1">
+                                    <a href="https://www.cambridge.org/core/journals/seed-science-research/article/orchid-embryotoseed-es-ratio-as-an-indicator-of-germination-behaviour-and-its-ecological-implications/A29983FF8CDE194DA2ED85DEEB345DAA" class="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">[PDF]</a>
+                                </p>
+                                <p class="text-xs text-gray-300 mt-1 text-shadow-for-dark-mode-text"><em>Although the seeds of various Orchidaceae members can be readily germinated on sterile nutrient media, numerous species exhibit complete asymbiotic germination failure. Also, while seed morphology in orchids has been previously linked to dispersal, associations with germinability have not been widely explored. We compiled seed morphometric and germination data for 203 orchid species globally, drawing from international literature and our lab's unpublished findings. Based on (a) final germination percentage and (b) pre-treatment duration, two distinct groups of asymbiotic germination behaviour emerged – termed compliant and defiant, respectively. Additionally, a statistically significant relationship between germinability and the embryo-to-seed (E:S) length ratio was observed. E:S values tended to be lower in species with defiant germination and higher in those with compliant germination. We further correlated seed morphometric and germination data with phylogenetically and ecologically significant parameters (subfamily, growth form, mycoheterotrophy level, climatic zone and habitat shadiness). Notably, lower E:S values and defiant germination predominate in orchids of shaded habitats, while compliant germination is more prevalent in open habitats. Lastly, considering the mycoheterotrophy continuum, we propose that the reduction in the E:S ratio is linked to the adaptation of various orchid lineages to shaded habitats through both an increased dispersal ability and their greater reliance on fungal symbiosis.</em></p>
+                            </div>
+                            <div class="publication-item">
+                                <h3 class="text-lg font-semibold text-white text-shadow-for-dark-mode-text">"Towards a standardised orchid germination protocol: determining the optimal duration of chemical scarification for orchid seeds by means of viability and permeability staining"</h3>
+                                <p class="text-sm text-gray-200 text-shadow-for-dark-mode-text"><strong>Oikonomidis S.,</strong>, Koutsovoulou K., Tsiftsis S., Thanos C.A. (2024). <em>Plant Biosystems - An International Journal Dealing with all Aspects of Plant Biology</em>, 158, pp. 563-571.</p>
+                                <p class="text-sm mt-1">
+                                    <a href="https://www.tandfonline.com/doi/full/10.1080/11263504.2024.2347847" class="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">[DOI Link/PDF]</a>
+                                </p>
+                                 <p class="text-xs text-gray-300 mt-1 text-shadow-for-dark-mode-text"><em>Complex nutrient media are used for the germination of orchids in the laboratory. These substrates are also suitable for the growth of microbes and thus the sterilization of both the medium and the seeds prior to sowing is mandatory. The surface disinfection of orchid seeds with chemical substances eliminates possible infections and enhances germination in several cases, by chemically scarifying their seed coats. However, long durations of chemical treatments may result in viability loss, and consequently, precisely determining the optimal treatment duration is essential for developing effective germination protocols. In this study, the double staining technique with Tetrazolium Chloride and Trypan Blue is tested as a proxy method to determine the optimal chemical treatment duration for 10 orchid taxa of Greece. Various durations of chemical treatment with 5% Ca(OCl)<sub>2</sub> were carried out on independent seed samples which were subsequently tested, pairwise, for both germination and viability. The results in the corresponding experiments are extraordinarily similar and we conclude that the double viability staining is a quick and accurate technique in determining the permeability and optimal duration for chemical scarification prior to germination experiments. The storability potential of the taxa studied is discussed in comparison with previous data of the NKUA Seed Bank.</em></p>
+                            </div>
+                            <div class="publication-item">
+                                <h3 class="text-lg font-semibold text-white text-shadow-for-dark-mode-text">"The effect of pollen origin (self- and cross-pollination) on seed production and viability in <i>Ophrys</i> (Orchidaceae)"</h3>
+                                <p class="text-sm text-gray-200 text-shadow-for-dark-mode-text"><strong>Oikonomidis S.</strong>, Koutsovoulou K., Kaltsis A., Constantinou C., Andreou M., Kadis C., Georghiou K., Thanos C.A. (2024). <em>Botany Letters</em>, 171: 500-508.</p>
+                                <p class="text-sm mt-1">
+                                    <a href="https://www.tandfonline.com/doi/abs/10.1080/23818107.2024.2393360" class="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">[DOI Link/PDF]</a>
+                                </p>
+                                 <p class="text-xs text-gray-300 mt-1 text-shadow-for-dark-mode-text"><em>The pollination biology of the genus <i>Ophrys</i> has been extensively explored, primarily due to their utilisation of sexual deception to attract pollinators. Typically, members of this genus produce a low number of fruits per individual and are considered obligate crossers. However, instances of self-pollination in <i>Ophrys</i> are not uncommon, although the impact of pollen origin on seed production remains understudied. As a predominantly cross-pollinated genus we hypothesise that self-pollination in <i>Ophrys</i> has a negative effect on seed production. The results of the present work will support decision making for the conservation of the genus. We investigate the consequences of self- and cross-pollination on (a) empty seeds produced and (b) viability of sound seeds for three <i>Ophrys</i> species: <i>Ophrys aesculapii</i>, <i>Ophrys ferrum-equinum</i>, and <i>Ophrys kotschyi</i> native to the East Mediterranean region. Bagged individuals of these species were meticulously hand-pollinated with pollen sourced either from their own flowers or from neighbouring individuals. Significant differences were observed across all three species, both in terms of the number of empty seeds and the viability of the produced seeds, with significantly lower viability and higher number of empty seeds in seed collections from self-pollinated individuals. Despite being self-compatible, the three <i>Ophrys</i> species exhibited notable inbreeding depression, as evidenced by the outcomes of this study. Based on our results the implementation of controlled cross hand-pollination in wild population may contribute in the increase of the reproductive success of <i>Ophrys spp.</i> by increasing the quality and quantity of the produced seeds.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="scroll-mt-20">
+                <div class="content-card">
+                    <h2 class="section-title text-shadow-for-dark-mode-text">Get In Touch</h2>
+                    <p class="mb-6 text-gray-100 text-shadow-for-dark-mode-text">
+                           I'm always open to discussing research, potential collaborations, or interesting ideas. Feel free to reach out!
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-2 text-shadow-for-dark-mode-text">Contact Information</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-1 text-gray-300 align-middle" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                    </svg>
+                                    <strong>Email:</strong> <a href="mailto:soikonomidis@biol.uoa.gr" class="ml-1 text-blue-400 hover:underline">soikonomidis@biol.uoa.gr</a>
+                                </li>
+                                <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-1 text-gray-300 align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                         <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v12a1 1 0 11-2 0V3a1 1 0 011-1zm5 2a1 1 0 011 1v12a1 1 0 11-2 0V5a1 1 0 011-1zm5 0a1 1 0 011 1v12a1 1 0 11-2 0V5a1 1 0 011-1zM2 18a1 1 0 001 1h14a1 1 0 001-1V6a1 1 0 00-1-1h-2.586a1 1 0 00-.707.293l-1.414 1.414A1 1 0 0112 8H8a1 1 0 01-.707-.293L5.879 6.293A1 1 0 005.172 6H3a1 1 0 00-1 1v12z" clip-rule="evenodd" />
+                                    </svg>
+                                    <strong>Office:</strong> <span class="ml-1">Office 74, Section of Botany, Department of Biology, National and Kapodistrian University of Athens, Athens, Greece</span>
+                                </li>
+                                <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-1 text-gray-300 align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                    </svg>
+                                    <strong>Phone:</strong> <span class="ml-1">+30 6971634291</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-2 text-shadow-for-dark-mode-text">Find me online</h3>
+                            <ul class="space-y-3">
+                                 <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-2 text-facebook align-middle" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.142v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.086h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                                    </svg>
+                                    <a href="https://www.facebook.com/profile.php?id=100070040256387" target="_blank" rel="noopener noreferrer" class="ml-1 text-blue-400 hover:underline">Spyridon Oikonomidis on Facebook</a>
+                                </li>
+                                <li class="flex items-center text-gray-100 text-shadow-for-dark-mode-text">
+                                    <svg class="w-5 h-5 inline mr-1 text-gray-300 align-middle" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073 4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                    <a href="https://instagram.com/s.oikonomidis/?hl=el" target="_blank" rel="noopener noreferrer" class="ml-1 text-blue-400 hover:underline">Spyridon Oikonomidis on Instagram</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-slate-950 text-gray-200 text-center py-6 mt-12 transition-colors duration-300"> <p class="text-shadow-for-dark-mode-text">&copy; <span id="currentYear"></span> Spyridon Oikonomidis. All rights reserved.</p>
+            <p class="text-sm text-shadow-for-dark-mode-text">Last updated: May 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theme toggle logic removed
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+             if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+                    mobileMenu.classList.toggle('hidden');
+                    const icons = mobileMenuButton.querySelectorAll('svg');
+                    if (icons.length === 2) {
+                        icons[0].classList.toggle('hidden', !isExpanded);
+                        icons[1].classList.toggle('hidden', isExpanded);
+                    }
+                });
+                const mobileNavLinks = mobileMenu.querySelectorAll('a.nav-link');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                         const icons = mobileMenuButton.querySelectorAll('svg');
+                        if (icons.length === 2) { icons[0].classList.remove('hidden'); icons[1].classList.add('hidden'); }
+                    });
+                });
+            }
+
+            // Set current year in footer
+            const currentYearElement = document.getElementById('currentYear');
+            if (currentYearElement) currentYearElement.textContent = new Date().getFullYear();
+
+            // Tab functionality for interests.html
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.dataset.tabTarget;
+
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        content.classList.add('hidden'); // Ensure others are hidden
+                    });
+
+                    button.classList.add('active');
+                    button.setAttribute('aria-selected', 'true');
+                    const activeContent = document.querySelector(targetTab);
+                    if (activeContent) {
+                        activeContent.classList.add('active');
+                        activeContent.classList.remove('hidden'); // Show the target
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
